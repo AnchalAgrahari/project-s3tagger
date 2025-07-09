@@ -1,0 +1,23 @@
+import boto3
+def create_s3_bucket(bucket_name):
+    try:
+        client = boto3.client('s3')
+        response = client.create_bucket(
+            Bucket = bucket_name,
+            CreateBucketConfiguration = {
+                'LocationConstraint' : 'us-west-2'
+            },
+        )
+        print(f"The bucket '{bucket_name}' is created successfully ")
+    except Exception as e:
+        print("An Exception occurred while creating Bucket",e)
+
+if __name__ == '__main__':
+    try:
+        bucket_name = input("Enter the Bucket name: ").strip()
+        if len(bucket_name) != 0:
+            create_s3_bucket(bucket_name)
+        else:
+            print("PLease Enter the Bucket name! ")
+    except Exception as e:
+        print("An exception has occurred naming the bucket!!!")
