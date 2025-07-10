@@ -1,0 +1,30 @@
+import boto3 
+def add_tag(bucket_name):
+    try:
+        client = boto3.client('s3')
+        response = client.put_bucket_tagging(
+            Bucket = bucket_name,
+            ChecksumAlgorithm = 'CRC32',
+            Tagging = {
+                'TagSet': [
+                {
+                    'Key': 'owner',
+                    'Value': 'Anchal'
+                },
+            ]
+            },
+            ExpectedBucketOwner='697429983773'
+        )
+        print(f"The tag added in '{bucket_name}' successfully.")
+    except Exception as e:
+        print("An Exception has occurred while adding tag in the bucket !!",e)
+
+if __name__ == '__main__':
+    try:
+        bucket_name = input("Provide the s3 bucket name: ").strip()
+        if len(bucket_name) != 0:
+            add_tag(bucket_name)
+        else:
+            print("Please provide existed bucket name in the s3 console")
+    except Exception as e:
+        print("The error was occurred by an invalid bucket name",e)
