@@ -1,0 +1,18 @@
+import json
+def read_file(file_name):
+    data = {
+        "name": "Anchal Agrahari",
+        "city": "Lucknow",
+        "isStudent": 'true'
+        
+    }
+    with open (file_name + ".json", "w") as f:
+        json.dump(data, f, indent = 4)
+    print(f"Data written to {file_name}")
+
+if __name__=='__main__':
+    try:
+        file_name=input("Enter the file name: ")
+        read_file(file_name)
+    except Exception as e:
+        print("An error occurred ",e)
