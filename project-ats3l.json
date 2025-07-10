@@ -1,0 +1,7 @@
+{
+    "name": "Anchal Agrahari",
+    "city": "Lucknow",
+    "isStudent": "true",
+    "project" : "ATS3L-Automated Tragger S3 via Lambda",
+    "architucture" : "Bucket-LambdaFunction-BucketTrigger-FunctioncodeDeploy-objectinS3Bucket"
+}
