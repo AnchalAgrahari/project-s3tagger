@@ -1,11 +1,13 @@
 import json
 def read_file(file_name):
     data = {
-        "name": "Anchal Agrahari",
-        "city": "Lucknow",
-        "isStudent": 'true'
-        
-    }
+    "owner" : "Anchal",
+    "costCenter" : "1234567890",
+    "departmentID" : "dept-12345",
+    "resourceOwner" : "AnchalAgrahari",
+    "projectName" : "awsResourceTagger",
+    "githubLink" : "https://github.com/AnchalAgrahari/test-repo/tree/json/project-aws-tagger"
+}
     with open (file_name + ".json", "w") as f:
         json.dump(data, f, indent = 4)
     print(f"Data written to {file_name}")
