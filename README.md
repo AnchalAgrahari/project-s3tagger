@@ -1,116 +1,107 @@
-# ATS³L — Automated Tagger in S3 via Lambda
+Automated Resource Tagging in AWS using Lambda
 
-## Architecture Overview
-ATS³L is a fully automated, event-driven system that streamlines the tagging of AWS S3 buckets. Leveraging **AWS Lambda** and **JSON-based configuration**, it eliminates the need for manual tagging by triggering functions the moment a tag definition file is uploaded.
+Problem Statement
+When we use a huge amount of S3 buckets in an organisation, It becomes difficult to differentiate which project or department or cost center is contributing what amount in our aws consolidated bills.
 
----
+Objective
+In order to solve the problem statement, We will create multiple tags and attach it to S3 buckets.
+It will help us to maintain better organization, improve searchability, and reduce manual effort.
+Brainstorming:
+The first thing I thought about in this project is:
+How to add tags?
+How to fill the knowledge gap in terms of AWS, Python, JSON?
+How does it work?
+Where should I start to add tags?
+How to write the code?
+Which programming language would be more efficient and suitable for writing the code?
+Where should I learn the languages from?
 
-## Project Setup & Initial Research
-The project began with the creation of an S3 bucket — not through the AWS Console, but **programmatically using Python and Boto3** to ensure repeatability and automation.
+Prerequisites:
+Before running this project, I made sure that I have the following installed, set up or Understood.
+Attribute name aise likho Tools and installation link or source info
+Tools used:
+Tools Name 
+Function
+VS code
+Code editor for  the project
+Python 3.12.3
+Programming language used in the project
+Github 
+To manage code and keep track of the project
+HTML
+Supporting object
+AWS account
+To use AWS service like s3, lambda, IAM, cloudWatch 
+AWS s3
+To store the uploaded file 
+AWS lambda
+To automatically add tag on the uploaded files
+IAM roles
+To manage roles and permission
+AWS cloudwatch
+To monitor the logs of the lambda service
 
-### References & Learning Sources:
-- [Boto3 Documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html)
-- [Step-by-Step Medium Guide](https://medium.com/@techjunction.info/step-by-step-guide-how-to-create-an-s3-bucket-in-aws-84cfb158f405)
 
-These resources helped build foundational knowledge, guiding the initial implementation of bucket creation logic.
 
----
+Reference nahi likh ke last me source likhna aur json learning ka medium pages ka bhi link dena,
+Reference:
+Aws boto3
+https://boto3.amazonaws.com/v1/documentation/api/latest/index.html
+Article for stepwise guide to create bucket 
+https://medium.com/@techjunction.info/step-by-step-guide-how-to-create-an-s3-bucket-in-aws-84cfb158f405 
+Guiding to create lambda function
+https://medium.com/@selhorma/the-complete-beginners-guide-to-creating-an-aws-lambda-function-from-scratch-d03e6fa7e2b2
 
-## Programmatic Tagging
-Once the bucket setup was complete, the next objective was to **implement tagging via code**. While tags can be manually added in the AWS Console, this project prioritized scalability and learning by using Python and Boto3.
 
->  **Time to complete tagging logic:** ~1 week (including understanding key-value structure and boto3 syntax)
+Architecture : 
+Local flow of project:
+Iss image me arrow poora connected hona chaiye plus flow ko 1, 2,3 krke dekho mere documents se dekh sakti ho tum. Flow tumhara galat hai, ham log file upload nhi kr rhi hain code se ham log tagg add kr rhe hain bucket me. File folder matlab object hota hai s3 me
+A python file executed from terminal 
+Uploaded the local file to an S3 bucket using boto3 
+Adds tags to the object  ye poora bullte points hata do
 
----
+AWS flow of project: isko bhi theek karo, ham log object me nhi list of bucekts me tagg add kr  rhe hian
 
-## Making Tagging Dynamic with JSON
-Manually updating tagging logic per bucket was inefficient. Since AWS tags utilize **key-value pairs**, it was natural to offload this logic into a structured **JSON file**.
+A file uploaded to an S3 Bucket
+This triggers  the AWS Lambda Function
+Lambda runs the script written in python using Boto3, which applies tags to the uploaded file 
+IAM roles allows Lambda to get the required permission to access S3 bucket
+AWS cloudWatch records the lambda logs for monitoring and debugging
+Ye bullet points hata do 
+Working Process : 
+First, write the code in VS code using Python and Boto3 to create an S3 bucket.
+	 
 
-### Step 3: Creating an Event-Driven Lambda
-- Lambda Name: `ats3l-automated-tagger-in-s3-via-lambda`
-- **Trigger**: S3 `putObject` event
-- **Purpose**: Detect new JSON uploads and initiate the tagging workflow
+Give the unique bucket name.
 
----
+Check if the bucket is created in AWS S3 or not .      
+   
+Create a JSON file or HTML file , to upload it as an Object in the bucket (project-automated-tagging).
 
-## Uploading the Tagging Configuration (JSON)
-Before integrating JSON, time was invested in mastering:
-- JSON syntax & formatting
-- Python JSON parsing (`json.loads()`)
-- Reusable tag structure design
 
-Once the JSON file was finalized, the Lambda handler was enhanced to read, interpret, and apply the tags dynamically.
+Upload it to an s3 bucket.
 
----
 
-## Lambda Handler — Core Logic
-The handler performs the following sequence:
-1. Automatically triggered by new JSON upload to S3
-2. Reads the JSON file from S3
-3. Parses tag data
-4. Uses `put_bucket_tagging()` to apply tags to the S3 bucket
 
-> The logic is dynamic, event-driven, and fully autonomous.
 
----
+Check if the Object is uploaded to the S3 bucket.
 
-## IAM Role & Permissions
-To enable proper functionality, the Lambda execution role was assigned:
-- `AmazonS3FullAccess`
+Then create a Function in lambda
 
-This allowed it to:
-- Read the uploaded JSON file
-- Apply tags via Boto3
 
-After deployment, re-uploading the JSON file triggered the function and updated the bucket's tags (visible under **Properties > Tags**).
 
----
 
-## How It Works — Under the Hood
-The system combines **serverless architecture** with **event-driven automation**:
 
-### Flow Diagram:
-1. JSON file uploaded to S3
-2. Lambda function auto-triggered
-3. Reads and parses the file
-4. Tags applied programmatically to the bucket
+Add a trigger to the lambda function using the S3 bucket.
 
-No manual intervention is needed post-deployment — making the solution scalable and future-ready.
 
----
 
-##  Key Challenges & Learnings
-### Python + Boto3
-- Lack of experience in Python initially slowed development
-- Gained hands-on practice with Boto3 functions (`put_bucket_tagging`, `get_object`, etc.)
+Write the python and boto3 script in lambda handler 
 
-### IAM Permissions
-- Struggled with access issues early on
-- Solved by analyzing CloudWatch logs and refining policies
 
-### CloudWatch Debugging
-- Crucial for identifying permission errors and handler failures
-- Became essential in the development feedback loop
+Deploy the script with deploy button in left sidebar or ctrl+shift+U
 
-### JSON Re-Uploads
-- Realized that to update tags, the same JSON file must be deleted and re-uploaded
-- Potential area for future optimization
+Now in the s3 bucket, re-upload the file and refresh the page .
+In the bucket's properties, you’ll see the added tags.
 
----
 
-## Final Thoughts
-This open-source initiative provided in-depth exposure to:
-- AWS S3
-- Lambda Functions
-- IAM Role Configurations
-- JSON Data Structures
-- Serverless & Event-Driven Design Principles
-
-> **ATS³L** represents a simple but powerful automation pipeline — translating uploaded tag configurations into real-time changes with zero manual steps.
-
----
-
-## Status: LIVE & DEPLOYABLE
-ATS³L is successfully deployed and operational. It serves as both a functional tool and a foundational learning experience in cloud automation. Perfect for anyone exploring **AWS infrastructure as code**, **Lambda automation**, or **S3 management workflows**.
-
-> Just upload your tag-config JSON. The rest is magic. ✨
