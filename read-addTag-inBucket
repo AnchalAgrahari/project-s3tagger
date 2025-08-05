@@ -33,10 +33,11 @@ def add_tag_in_Bucket(bucket_name, data):
         print("An exception has occured while tagging", e)
 if __name__ == '__main__':
     try:
-        bucket_name = 'project-ats3l'
-        key = 'project-ats3l.json'
+        bucket_list = ['project-automated-tagging','project-automated-tagging02','project-automated-tagging03']
+        key = 'project-s3-tagging.json'
+        for bucket_name in bucket_list:
+            print(f"\n processing bucket : {bucket_name}")
         prased_data = read_json_from_s3(bucket_name, key)
-        print("Let's check data", prased_data)
         add_tag_in_Bucket(bucket_name, prased_data)
     except Exception as e:
         print("An exception has occured", e) 
