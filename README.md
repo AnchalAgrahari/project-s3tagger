@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Automated Resource Tagging in AWS using Lambda
 
 Problem Statement
@@ -105,3 +106,6 @@ Now in the s3 bucket, re-upload the file and refresh the page .
 In the bucket's properties, you’ll see the added tags.
 
 
+=======
+# project-s3tagger
+>>>>>>> origin/main
