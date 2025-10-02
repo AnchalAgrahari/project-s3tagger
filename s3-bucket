@@ -20,4 +20,4 @@ if __name__ == '__main__':
         else:
             print("PLease Enter the Bucket name! ")
     except Exception as e:
-        print("An exception has occurred naming the bucket!!!")
+        print("An exception has occurred naming the bucket!!!",e)
