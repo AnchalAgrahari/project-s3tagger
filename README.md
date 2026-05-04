@@ -106,9 +106,4 @@ Write the python and boto3 script in lambda handler
 Deploy the script with deploy button in left sidebar or ctrl+shift+U
 
 Now in the s3 bucket, re-upload the file and refresh the page .
-In the bucket's properties, you’ll see the added tags.
-
-
-=======
-# project-s3tagger
->>>>>>> origin/main
+In the bucket's properties, you’ll see the added tags
