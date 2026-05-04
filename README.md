@@ -1,50 +1,53 @@
-<<<<<<< HEAD
+---
 Automated Resource Tagging in AWS using Lambda
+---
 
-Problem Statement
+## Problem Statement
 When we use a huge amount of S3 buckets in an organisation, It becomes difficult to differentiate which project or department or cost center is contributing what amount in our aws consolidated bills.
 
-Objective
-In order to solve the problem statement, We will create multiple tags and attach it to S3 buckets.
-It will help us to maintain better organization, improve searchability, and reduce manual effort.
-Brainstorming:
-The first thing I thought about in this project is:
-How to add tags?
-How to fill the knowledge gap in terms of AWS, Python, JSON?
-How does it work?
-Where should I start to add tags?
-How to write the code?
-Which programming language would be more efficient and suitable for writing the code?
-Where should I learn the languages from?
+### Objective
+- In order to solve the problem statement, We will create multiple tags and attach it to S3 buckets.
+- It will help us to maintain better organization, improve searchability, and reduce manual effort.
 
-Prerequisites:
+### Brainstorming:
+- The first thing I thought about in this project is:
+- How to add tags?
+- How to fill the knowledge gap in terms of AWS, Python, JSON?
+- How does it work?
+- Where should I start to add tags?
+- How to write the code?
+- Which programming language would be more efficient and suitable for writing the code?
+- Where should I learn the languages from?
+
+### Prerequisites:
 Before running this project, I made sure that I have the following installed, set up or Understood.
 Attribute name aise likho Tools and installation link or source info
-Tools used:
-Tools Name 
-Function
-VS code
-Code editor for  the project
-Python 3.12.3
-Programming language used in the project
-Github 
-To manage code and keep track of the project
-HTML
-Supporting object
-AWS account
-To use AWS service like s3, lambda, IAM, cloudWatch 
-AWS s3
-To store the uploaded file 
-AWS lambda
-To automatically add tag on the uploaded files
-IAM roles
-To manage roles and permission
-AWS cloudwatch
-To monitor the logs of the lambda service
+
+### Tools used:
+- Tools Name 
+- Function
+- VS code
+- Code editor for  the project
+- Python 3.12.3
+- Programming language used in the project
+- Github 
+- To manage code and keep track of the project
+- HTML
+- Supporting object
+- AWS account
+- To use AWS service like s3, lambda, IAM, cloudWatch 
+- AWS s3
+- To store the uploaded file 
+- AWS lambda
+- To automatically add tag on the uploaded files
+- IAM roles
+- To manage roles and permission
+- AWS cloudwatch
+- To monitor the logs of the lambda service
 
 
 
-Reference nahi likh ke last me source likhna aur json learning ka medium pages ka bhi link dena,
+#### Reference nahi likh ke last me source likhna aur json learning ka medium pages ka bhi link dena,
 Reference:
 Aws boto3
 https://boto3.amazonaws.com/v1/documentation/api/latest/index.html
